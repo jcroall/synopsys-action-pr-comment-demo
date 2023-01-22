@@ -13,7 +13,6 @@ on:
 
 permissions:
   issues: write
-  discussions: write
   pull-requests: write
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -48,6 +47,7 @@ jobs:
           blackduck_scan_full: true
         env:
           MACOSX_BRIDGE_URL: "https://artifactory.internal.synopsys.com:443/artifactory/clops-local/clops.sig.synopsys.com/synopsys-action/0.1.155-demo-only/ci-package-0.1.155-demo-only-macosx.zip"
+          GITHUB_TOKEN: ${{ github.token }}
 
       - name: Synopsys AST (Incremental)
         if: ${{ github.event_name == 'pull_request' }}
