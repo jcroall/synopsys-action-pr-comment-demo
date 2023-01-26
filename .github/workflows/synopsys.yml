@@ -45,9 +45,11 @@ jobs:
           blackduck_apiToken: ${{ secrets.BLACKDUCK_API_TOKEN }}
           blackduck_automation_fixpr: true
           blackduck_scan_full: true
+
+          github_token: ${{ secrets.GITHUB_TOKEN }}
         env:
-          MACOSX_BRIDGE_URL: "https://artifactory.internal.synopsys.com:443/artifactory/clops-local/clops.sig.synopsys.com/synopsys-action/0.1.155-demo-only/ci-package-0.1.155-demo-only-macosx.zip"
-          GITHUB_TOKEN: ${{ github.token }}
+          MACOSX_BRIDGE_URL: "https://artifactory.internal.synopsys.com:443/artifactory/clops-local/clops.sig.synopsys.com/synopsys-action/0.1.162-demo-only/ci-package-0.1.162-demo-only-macosx.zip"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Synopsys AST (Incremental)
         if: ${{ github.event_name == 'pull_request' }}
@@ -65,9 +67,11 @@ jobs:
           blackduck_url: ${{ secrets.BLACKDUCK_URL }}
           blackduck_apiToken: ${{ secrets.BLACKDUCK_API_TOKEN }}
           blackduck_scan_full: false
+
+          github_token: ${{ secrets.GITHUB_TOKEN }}
         env:
-          MACOSX_BRIDGE_URL: "https://artifactory.internal.synopsys.com:443/artifactory/clops-local/clops.sig.synopsys.com/synopsys-action/0.1.155-demo-only/ci-package-0.1.155-demo-only-macosx.zip"
+          MACOSX_BRIDGE_URL: "https://artifactory.internal.synopsys.com:443/artifactory/clops-local/clops.sig.synopsys.com/synopsys-action/0.1.162-demo-only/ci-package-0.1.162-demo-only-macosx.zip"
           BRIDGE_GITHUB_PR_NUMBER: ${{ github.event.pull_request.number }}
           BRIDGE_COVERITY_CONNECT_RESULTS_INTEGRATION_ENABLED: true
           BRIDGE_BLACKDUCK_RESULTS_INTEGRATION_ENABLED: true
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
